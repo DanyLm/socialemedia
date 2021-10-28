@@ -10,11 +10,16 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import MuiLink from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
 
 // Icons
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import EditIcon from '@material-ui/icons/Edit';
+import Tooltip from '@material-ui/core/Tooltip'
+
+import { logoutUser, uploadImage } from '../redux/actions/userActions'
 
 const styles = (theme) => ({
     paper: {
@@ -65,6 +70,19 @@ const styles = (theme) => ({
 });
 
 export class Profile extends Component {
+
+    state = {
+        ref: React.createRef()
+    }
+
+    handleImageChange = (event) => {
+        const image = event.target.files[0];
+        const formData = new FormData();
+        formData.append('image', image, image.name);
+        this.props.uploadImage(formData);
+    }
+
+
     render() {
 
         const {
@@ -78,7 +96,7 @@ export class Profile extends Component {
                     website,
                     location,
                 },
-                loading, 
+                loading,
                 authenticated
             }
         } = this.props
@@ -91,6 +109,18 @@ export class Profile extends Component {
                         <div className={classes.profile}>
                             <div className="image-wrapper">
                                 <img className="profile-image" src={imageUrl} alt="profile" />
+                                <input
+                                    ref={(ref) => this.state.ref = ref}
+                                    type="file"
+                                    id="image-upload"
+                                    hidden="hidden"
+                                    onChange={this.handleImageChange}
+                                />
+                                <Tooltip title="Edit profile picture">
+                                    <IconButton onClick={() => this.state.ref.click()} className="button">
+                                        <EditIcon color="primary" />
+                                    </IconButton>
+                                </Tooltip>
                             </div>
                             <hr />
                             <div className="profile-details">
@@ -156,9 +186,13 @@ const mapStateToProps = (state) => ({
     user: state.user
 })
 
+const mapActionToProps = { logoutUser, uploadImage }
+
 Profile.propTypes = {
     user: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    uploadImage: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile))
+export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(Profile))
