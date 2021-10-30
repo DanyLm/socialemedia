@@ -4,22 +4,23 @@ import withStyles from '@material-ui/styles/withStyles'
 import dayjs from 'dayjs'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import EditDetails from './EditDetails'
 
 // Mui stuff
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import MuiLink from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
 
 // Icons
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/Edit';
-import Tooltip from '@material-ui/core/Tooltip'
+import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn'
 
 import { logoutUser, uploadImage } from '../redux/actions/userActions'
+import MuiIconButton from '../util/MuiIconButton'
 
 const styles = (theme) => ({
     paper: {
@@ -82,6 +83,9 @@ export class Profile extends Component {
         this.props.uploadImage(formData);
     }
 
+    handleLogout = () => {
+        this.props.logoutUser();
+    }
 
     render() {
 
@@ -116,11 +120,9 @@ export class Profile extends Component {
                                     hidden="hidden"
                                     onChange={this.handleImageChange}
                                 />
-                                <Tooltip title="Edit profile picture">
-                                    <IconButton onClick={() => this.state.ref.click()} className="button">
-                                        <EditIcon color="primary" />
-                                    </IconButton>
-                                </Tooltip>
+                                <MuiIconButton tip="Edit profile picture" onClick={() => this.state.ref.click()} btnClassName="button">
+                                    <EditIcon color="primary" />
+                                </MuiIconButton>
                             </div>
                             <hr />
                             <div className="profile-details">
@@ -161,6 +163,10 @@ export class Profile extends Component {
                                     Joined {dayjs(createdAt).format('MMM YYYY')}
                                 </span>
                             </div>
+                            <MuiIconButton tip="Logout" onClick={this.handleLogout}>
+                                <KeyboardReturnIcon color="primary" />
+                            </MuiIconButton>
+                            <EditDetails />
                         </div>
                     </Paper> :
                     <Paper className={classes.paper}>
