@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid'
-import axios from 'axios'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { getScreams } from '../redux/actions/dataActions'
 
-import Scream from '../components/Scream'
-import Profile from '../components/Profile'
+import Scream from '../components/scream/Scream'
+import Profile from '../components/profile/Profile'
 
 
 export class home extends Component {

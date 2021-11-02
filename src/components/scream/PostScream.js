@@ -4,9 +4,9 @@ import withStyles from '@material-ui/styles/withStyles'
 
 // Redux
 import { connect } from 'react-redux'
-import { postScream, clearErrors } from '../redux/actions/dataActions'
+import { postScream, clearErrors } from '../../redux/actions/dataActions'
 
-import MuiIconButton from '../util/MuiIconButton'
+import MuiIconButton from '../../util/MuiIconButton'
 
 // Mui stuff
 import Button from '@material-ui/core/Button'

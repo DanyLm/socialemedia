@@ -35,7 +35,15 @@ export default function (state = initialState, action) {
             }
         case LIKE_SCREAM:
         case UNLIKE_SCREAM:
-            state.screams[state.screams.findIndex((scream) => scream.screamId === action.payload.screamId)] = action.payload;
+
+            state.screams[state.screams.findIndex(
+                (scream) => scream.screamId === action.payload.screamId
+            )] = action.payload;
+            
+            if (state.scream.screamId === action.payload.screamId) {
+                state.scream = action.payload
+            }  
+
             return {
                 ...state
             }

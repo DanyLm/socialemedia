@@ -19,8 +19,8 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/Edit';
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn'
 
-import { logoutUser, uploadImage } from '../redux/actions/userActions'
-import MuiIconButton from '../util/MuiIconButton'
+import { logoutUser, uploadImage } from '../../redux/actions/userActions'
+import MuiIconButton from '../../util/MuiIconButton'
 
 const styles = (theme) => ({
     paper: {

@@ -6,11 +6,12 @@ import clsx from 'clsx'
 
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getScream } from '../redux/actions/dataActions'
+import { getScream } from '../../redux/actions/dataActions'
 
 // My components
 import LikeButton from './LikeButton'
-import MuiIconButton from '../util/MuiIconButton'
+import Comments from './Comments'
+import MuiIconButton from '../../util/MuiIconButton'
 
 // Mui
 
@@ -33,10 +34,6 @@ const styles = (theme) => ({
         height: 200,
         borderRadius: '50%',
         objectFit: 'cover'
-    },
-    inivisibleSeparator: {
-        border: 'none',
-        margin: 4
     },
     closeButton: {
         position: 'absolute',
@@ -81,7 +78,8 @@ class ScreamDialog extends Component {
                 likeCount,
                 commentCount,
                 userImage,
-                userHandle
+                userHandle,
+                comments
             },
             ui: {
                 loading
@@ -120,6 +118,11 @@ class ScreamDialog extends Component {
                             {commentCount} comments
                         </span>
                     </Grid>
+                    {
+                        comments.length > 0 &&
+                        <hr className={classes.visibleSeparator} />
+                    }
+                    <Comments comments={comments} />
                 </Grid>
             )
 

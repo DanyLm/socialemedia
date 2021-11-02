@@ -9,11 +9,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 
 // My stuff
-import MuiIconButton from '../util/MuiIconButton';
-import PostScream from './PostScream';
+import MuiIconButton from '../../util/MuiIconButton';
+import PostScream from '../scream/PostScream';
 
 // Icons
-import AddIcon from '@material-ui/icons/Add'
 import HomeIcon from '@material-ui/icons/Home'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 
