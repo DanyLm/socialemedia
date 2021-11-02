@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 
 // My stuff
 import MuiIconButton from '../util/MuiIconButton';
+import PostScream from './PostScream';
 
 // Icons
 import AddIcon from '@material-ui/icons/Add'
@@ -27,9 +28,7 @@ export class Navbar extends Component {
                     {
                         authenticated ?
                             <>
-                                <MuiIconButton tip="Post a Scream!">
-                                    <AddIcon />
-                                </MuiIconButton>
+                                <PostScream />
                                 <Link to='/'>
                                     <MuiIconButton tip="Home">
                                         <HomeIcon />
