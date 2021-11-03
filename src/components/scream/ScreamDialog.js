@@ -6,11 +6,12 @@ import clsx from 'clsx'
 
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getScream } from '../../redux/actions/dataActions'
+import { getScream, clearErrors } from '../../redux/actions/dataActions'
 
 // My components
 import LikeButton from './LikeButton'
 import Comments from './Comments'
+import CommentForm from './CommentForm'
 import MuiIconButton from '../../util/MuiIconButton'
 
 // Mui
@@ -65,6 +66,7 @@ class ScreamDialog extends Component {
 
     handleClose = () => {
         this.setState({ open: false })
+        this.props.clearErrors()
     }
 
     render() {
@@ -99,11 +101,11 @@ class ScreamDialog extends Component {
                         <Typography component={Link} color="primary" variant="h5" to={`/users/${userHandle}`}>
                             @{userHandle}
                         </Typography>
-                        <hr className={classes.inivisibleSeparator} />
+                        <hr className={classes.invisibleSeparator} />
                         <Typography variant="body2" color="textSecondary">
                             {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                         </Typography>
-                        <hr className={classes.inivisibleSeparator} />
+                        <hr className={classes.invisibleSeparator} />
                         <Typography variant="body1">
                             {body}
                         </Typography>
@@ -118,10 +120,7 @@ class ScreamDialog extends Component {
                             {commentCount} comments
                         </span>
                     </Grid>
-                    {
-                        comments.length > 0 &&
-                        <hr className={classes.visibleSeparator} />
-                    }
+                    <CommentForm screamId={screamId} />
                     <Comments comments={comments} />
                 </Grid>
             )
@@ -160,6 +159,7 @@ class ScreamDialog extends Component {
 }
 
 ScreamDialog.propTypes = {
+    clearErrors: PropTypes.func.isRequired,
     getScream: PropTypes.func.isRequired,
     screamId: PropTypes.string.isRequired,
     userHandle: PropTypes.string.isRequired,
@@ -173,7 +173,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    getScream
+    getScream,
+    clearErrors
 }
 
 export default connect(mapStateToProps, mapActionsToProps)((withStyles)(styles)(ScreamDialog))

@@ -26,9 +26,9 @@ class Comments extends Component {
         return (
             <Grid container>
                 {
-                    comments.map(({ body, createAt, userImage, userHandle }, index) => {
+                    comments.map(({ body, userImage, userHandle, createdAt }, index) => {
                         return (
-                            <React.Fragment key={createAt + userHandle}>
+                            <React.Fragment key={createdAt + userHandle}>
                                 <Grid item sm={12}>
                                     <Grid container>
                                         <Grid item sm={2}>
