@@ -7,6 +7,7 @@ import { getScreams } from '../redux/actions/dataActions'
 
 import Scream from '../components/scream/Scream'
 import Profile from '../components/profile/Profile'
+import ScreamSkeleton from '../util/ScreamSkeleton'
 
 
 class home extends Component {
@@ -22,9 +23,9 @@ class home extends Component {
             <Grid container spacing={4}>
                 <Grid item sm={8} xs={12}>
                     {
-                        !loading ? (
-                            screams.map(row => <Scream key={row.screamId} scream={row} />)
-                        ) : <p>Loading...</p>
+                        !loading ?
+                            screams.map(row => <Scream key={row.screamId} scream={row} />) :
+                            <ScreamSkeleton />
                     }
                 </Grid>
                 <Grid item sm={4} xs={12}>
