@@ -1,6 +1,6 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
+    "short_name": "socialemedia",
+    "name": "Sociale-Media App",
     "icons": [{
         "src": "icon.png",
         "size": "144x144",
