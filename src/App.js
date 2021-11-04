@@ -23,6 +23,7 @@ import signup from './pages/signup'
 import user from './pages/user'
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://europe-west1-socialmedia-c5a99.cloudfunctions.net/api'
 
 const token = localStorage.FBIdToken;
 
