@@ -11,10 +11,11 @@ import Button from '@material-ui/core/Button';
 // My stuff
 import MuiIconButton from '../../util/MuiIconButton';
 import PostScream from '../scream/PostScream';
+import Notifications from './Notifications'
 
 // Icons
 import HomeIcon from '@material-ui/icons/Home'
-import NotificationsIcon from '@material-ui/icons/Notifications'
+
 
 export class Navbar extends Component {
     render() {
@@ -33,9 +34,7 @@ export class Navbar extends Component {
                                         <HomeIcon />
                                     </MuiIconButton>
                                 </Link>
-                                <MuiIconButton tip="Notifications">
-                                    <NotificationsIcon />
-                                </MuiIconButton>
+                                <Notifications />
                             </>
                             :
                             <>

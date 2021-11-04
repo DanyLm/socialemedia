@@ -42,6 +42,7 @@ class Scream extends Component {
     render() {
         const {
             classes,
+            openDialog,
             scream: {
                 likeCount,
                 commentCount,
@@ -54,7 +55,7 @@ class Scream extends Component {
             user: {
                 authenticated,
                 credentials: { handle }
-            }
+            },
         } = this.props
 
         const deleteButton = authenticated && userHandle === handle ?
@@ -96,6 +97,7 @@ class Scream extends Component {
                         {commentCount} comments
                     </span>
                     <ScreamDialog
+                        openDialog={openDialog}
                         screamId={screamId}
                         userHandle={userHandle}
                     />
@@ -112,7 +114,8 @@ const mapStateToProps = (state) => ({
 Scream.propTypes = {
     user: PropTypes.object.isRequired,
     scream: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    openDialog: PropTypes.bool,
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(Scream))

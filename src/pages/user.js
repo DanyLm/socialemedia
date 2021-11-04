@@ -11,11 +11,13 @@ import { getUserData } from '../redux/actions/dataActions'
 class user extends Component {
 
     state = {
-        profile: null
+        profile: null,
+        screamId: this.props.match.params.screamId
     }
 
     componentDidMount() {
         const handle = this.props.match.params.handle;
+
         this.props.getUserData(handle);
 
         axios.get(`/user/${handle}`)
@@ -30,20 +32,25 @@ class user extends Component {
     render() {
 
         const { screams, loading } = this.props.data
-        const { profile } = this.state
-
+        const { profile, screamId } = this.state
+        
         const screamsMarkup = loading ? (
             <p>Loading data...</p>
-        ) :
-            (
-                screams === null ?
-                    (
-                        <p>No screams from this user</p>
-                    ) :
-                    (
-                        screams.map(row => <Scream key={row.screamId} scream={row} />)
+        ) : (
+            screams.length === 0 ? (
+                <p>No screams from this user</p>
+            ) : !screamId ? (
+                screams.map(row => <Scream key={row.screamId} scream={row} />)
+            ) : (
+                screams.map(row => {
+                    return (
+                        row.screamId !== screamId ?
+                            <Scream key={row.screamId} scream={row} /> :
+                            <Scream key={row.screamId} scream={row} openDialog />
                     )
+                })
             )
+        )
 
         return (
             <Grid container spacing={4}>

@@ -5,7 +5,8 @@ import {
     CLEAR_ERRORS,
     LOADING_UI,
     SET_UNAUTHENTICATED,
-    LOADING_USER
+    LOADING_USER,
+    MARK_NOTIFICATIONS_READ
 } from '../types'
 
 /**
@@ -99,16 +100,39 @@ export const uploadImage = (formData) => (dispatch) => {
         .catch(err => console.err(err))
 }
 
-
+/**
+ * 
+ * @param {*} userDetails 
+ * @returns 
+ */
 export const editUserDetails = (userDetails) => (dispatch) => {
     dispatch({ type: LOADING_USER });
     axios.post('/user', userDetails)
-    .then(() => {
-        dispatch(getUserData());
-    })
-    .catch(err => console.error(err))
+        .then(() => {
+            dispatch(getUserData());
+        })
+        .catch(err => console.error(err))
 }
 
+/**
+ * 
+ * @param {*} notifications 
+ * @returns 
+ */
+export const markNotificationsRead = (notifications) => dispatch => {
+    axios.post('/notifications', notifications)
+        .then(() => {
+            dispatch({
+                type: MARK_NOTIFICATIONS_READ
+            })
+        })
+        .catch(err => console.error(err))
+}
+
+/**
+ * 
+ * @param {*} token 
+ */
 const setAuthorizationHeader = (token) => {
     const FBIdToken = `Bearer ${token}`;
     localStorage.setItem('FBIdToken', FBIdToken)
