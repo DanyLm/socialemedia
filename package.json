@@ -2,6 +2,7 @@
     "name": "socialmedia-client",
     "version": "0.1.0",
     "private": true,
+    "proxy": "https://europe-west1-socialmedia-c5a99.cloudfunctions.net/api",
     "dependencies": {
         "@material-ui/core": "^4.12.3",
         "@material-ui/icons": "^4.11.2",
@@ -25,7 +26,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "lint": "eslint --max-warnings=0 ."
     },
     "browserslist": {
         "production": [
@@ -39,5 +41,10 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "https://europe-west1-socialmedia-c5a99.cloudfunctions.net/api"
+    "devDependencies": {
+        "babel-eslint": "^10.1.0",
+        "eslint": "^8.1.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-plugin-react": "^7.26.1"
+    }
 }
