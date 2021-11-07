@@ -10,6 +10,7 @@
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^12.8.3",
         "axios": "^0.23.0",
+        "babel-eslint": "^10.1.0",
         "clsx": "^1.1.1",
         "dayjs": "^1.10.7",
         "jwt-decode": "^3.1.2",
@@ -27,7 +28,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint --max-warnings=0 ."
+        "lint": "eslint",
+        "lint-src": "eslint src/**/*"
     },
     "browserslist": {
         "production": [
@@ -42,8 +44,7 @@
         ]
     },
     "devDependencies": {
-        "babel-eslint": "^10.1.0",
-        "eslint": "^8.1.0",
+        "eslint": "^7.11.0",
         "eslint-config-google": "^0.14.0",
         "eslint-plugin-react": "^7.26.1"
     }
