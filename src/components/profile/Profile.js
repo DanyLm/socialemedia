@@ -45,7 +45,7 @@ export class Profile extends Component {
 	}
 
 	render() {
-		const { ref } = this.state;
+
 		const {
 			classes,
 			user: {
@@ -71,7 +71,7 @@ export class Profile extends Component {
 							<div className="image-wrapper">
 								<img className="profile-image" src={imageUrl} alt="profile" />
 								<input
-									ref={ref}
+									ref={(ref) => this.state.ref = ref}
 									type="file"
 									id="image-upload"
 									hidden="hidden"
