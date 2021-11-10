@@ -17,7 +17,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/Edit';
-import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 import MuiIconButton from '../../util/MuiIconButton';
@@ -121,7 +121,7 @@ export class Profile extends Component {
 								</span>
 							</div>
 							<MuiIconButton tip="Logout" onClick={this.handleLogout}>
-								<KeyboardReturnIcon color="primary" />
+								<PowerSettingsNewIcon color="primary" />
 							</MuiIconButton>
 							<EditDetails />
 						</div>
